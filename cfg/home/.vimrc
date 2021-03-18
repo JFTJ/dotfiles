@@ -11,8 +11,7 @@ set colorcolumn=80
 
 " Classin Indentation Style
 set autoindent
-set backspace=indent,eol,start
-set shiftwidth=4
+set backspace=indent,eol,start set shiftwidth=4
 set softtabstop=4
 set expandtab
 
@@ -44,7 +43,6 @@ Plugin 'gmarik/Vundle.vim'
 """ Add Plugin here
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-Bundle 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'

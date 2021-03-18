@@ -109,12 +109,8 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 export EDITOR="vim"
-export VISUAL="vim"
 
 export PATH=$PATH:~/Scripts
-export PATH=$PATH:~/.GOG_Games/Factorio
-
-export NNTPSERVER="news.epita.fr" && export NNTPSERVER
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -123,14 +119,8 @@ alias ls='ls --color=auto'
 alias lsa='ls -a'
 alias cd..='cd ..'
 
-alias stop-ap='sudo create_ap --stop wlp59s0'
-alias fcomp='gcc -Wall -Wextra -Werror -pedantic -std=c99 -fsanitize=address -DDEBUG -D_POSIX_C_SOURCE=200809 *.c'
-alias us='setxkbmap us -option caps:escape'
+alias us='setxkbmap us intl -option caps:escape'
 alias fr='setxkbmap fr -option caps:escape'
 alias tp='cd ~/pr'
 
 alias freeze='pip freeze > requirements.txt'
-
-export PGDATA="$HOME/postgres_data"
-export PGHOST="/tmp"
-export PATH="/home/rn/.local/bin:$PATH"
