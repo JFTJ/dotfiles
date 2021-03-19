@@ -4,5 +4,9 @@
   remote_user: root
 
   tasks:
+    - name: Ensure pacman cache is up to date
+      pacman:
+        update_cache: yes
+
     - include: tasks/rank_mirrors.yml
     - include: tasks/install_yay.yml

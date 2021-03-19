@@ -14,12 +14,12 @@
         state: present
 
     - name: Ensure rn is present
-        user:
-          name: rn
-          state: present
-          groups: wheel
-          apppend: yes
-          createhome: yes
+      user:
+        name: rn
+        state: present
+        groups: wheel
+        append: yes
+        createhome: yes
 
     - name: Allow 'wheel' group to have passwordless sudo
       lineinfile:

@@ -7,11 +7,19 @@
     - name: Ensure base-devel is installed
       pacman:
         name: base-devel
-    
+
     - name: Clone yay
       git:
         repo: https://aur.archlinux.org/yay.git
         dest: /tmp/yay
 
+    - name: Ensure yay installation folder is allowed for rn
+      file:
+        path: /tmp/yay/
+        owner: rn
+        mode: '700'
+
     - name: Install yay
+      become: yes
+      become_user: rn
       shell: (cd /tmp/yay/ && makepkg -si --noconfirm)

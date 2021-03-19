@@ -1,0 +1,4 @@
+---
+- import_playbook: sysadmin.yml
+- import_playbook: package_management.yml
+- import_playbook: gui.yml

@@ -1,0 +1,21 @@
+- name: Setup lightdm greeter with themes
+  block:
+    - name: Install lightdm and themes
+      pacman:
+        name:
+          - lightdm
+          - lightdm-webkit2-greeter
+          - lightdm-webkit-theme-litarvan
+
+    - name: Set lightdm config files
+      copy:
+        src: "{{ item }}"
+        dest: /etc/lightdm/
+      with_fileglob:
+        - "cfg/etc/lightdm/*"
+
+    - name: Enable lightdm
+      service:
+        name: lightdm
+        enabled: yes
+

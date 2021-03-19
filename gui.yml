@@ -1,0 +1,36 @@
+---
+- hosts: all
+  name: Graphical User Interface
+  remote_user: root
+  roles:
+    - kewlfft.aur
+
+  tasks:
+    - name: Ensure video driver are installed
+      pacman:
+        name: "{{video_driver}}"
+
+    - include: tasks/install_i3.yml
+    - include: tasks/install_greeter.yml
+
+    - name: Ensure fonts are installed
+      pacman:
+        name:
+          - ttf-hack
+          - ttf-font-awesome
+          - noto-fonts-emoji
+          - ttf-liberation
+
+    - name: Ensure urxvt is installed
+      pacman:
+        name: rxvt-unicode
+
+    - name: Ensure rofi is installed
+      pacman:
+        name: rofi
+
+    - name: Install polybar
+      become: yes
+      become_user: rn
+      aur:
+        name: polybar

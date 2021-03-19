@@ -15,5 +15,3 @@
 
     - name: Start sorting of mirrors
       shell: /usr/bin/rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
-      async: 300
-      poll: 0
