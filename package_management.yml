@@ -1,0 +1,8 @@
+---
+- hosts: all
+  name: Package management
+  remote_user: root
+
+  tasks:
+    - include: tasks/rank_mirrors.yml
+    - include: tasks/install_yay.yml

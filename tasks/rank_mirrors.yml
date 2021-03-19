@@ -1,0 +1,19 @@
+- name: Rank mirrors
+  block:
+    - name: Ensure pacman-contrib is installed
+      pacman:
+        name: pacman-contrib
+
+    - name: Create backup of mirrorlist
+      copy:
+        remote_src: yes
+        src: /etc/pacman.d/mirrorlist
+        dest: /etc/pacman.d/mirrorlist.backup
+
+    - name: Uncomment every server  in mirrorlist
+      command: /usr/bin/sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
+
+    - name: Start sorting of mirrors
+      shell: /usr/bin/rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+      async: 300
+      poll: 0

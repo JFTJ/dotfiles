@@ -1,0 +1,17 @@
+- name: Install yay
+  block:
+    - name: Ensure git is installed
+      pacman:
+        name: git
+
+    - name: Ensure base-devel is installed
+      pacman:
+        name: base-devel
+    
+    - name: Clone yay
+      git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: /tmp/yay
+
+    - name: Install yay
+      shell: (cd /tmp/yay/ && makepkg -si --noconfirm)
