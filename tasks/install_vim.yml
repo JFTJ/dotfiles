@@ -11,6 +11,8 @@
         name: gvim
 
     - name: Ensure vundle is installed
+      become: yes
+      become_user: rn
       aur:
         name: vundle
 

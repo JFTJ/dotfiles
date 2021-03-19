@@ -11,7 +11,10 @@
         dest: /etc/pacman.d/mirrorlist.backup
 
     - name: Uncomment every server  in mirrorlist
-      command: /usr/bin/sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
+      replace:
+        path: /etc/pacman.d/mirrorlist.backup
+        regexp: ^#Server
+        replace: Server
 
     - name: Start sorting of mirrors
       shell: /usr/bin/rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist

@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  name: Package management
+  name: User configuration
   roles:
     - kewlfft.aur
   remote_user: rn
