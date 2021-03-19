@@ -1,0 +1,30 @@
+---
+- hosts: all
+  name: System Adminstration
+  remote_user: root
+
+  tasks:
+    - name: Make sure sudo is installed
+      pacman:
+        name: sudo
+
+    - name: Make sure we have a 'wheel' group
+      group:
+        name: wheel
+        state: present
+
+    - name: Ensure rn is present
+        user:
+          name: rn
+          state: present
+          groups: wheel
+          apppend: yes
+          createhome: yes
+
+    - name: Allow 'wheel' group to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
