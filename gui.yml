@@ -43,9 +43,3 @@
           pacman:
             name: pulseaudio-bluetooth
           tags: bluetooth
-
-    - name: Install polybar
-      become: yes
-      become_user: rn
-      aur:
-        name: polybar

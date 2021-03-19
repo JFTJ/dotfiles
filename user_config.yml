@@ -1,0 +1,26 @@
+---
+- hosts: all
+  name: Package management
+  roles:
+    - kewlfft.aur
+  remote_user: rn
+
+  tasks:
+    - name: Install config files
+      copy:
+        src: "{{ item }}"
+        dest: /home/rn/
+        owner: rn
+      with_fileglob:
+        - cfg/home/.*
+
+    - name: Install .config directory
+      copy:
+        src: cfg/home/.config/
+        dest: /home/rn/.config
+
+    - include: tasks/polybar_config.yml
+    - include: tasks/install_vim.yml
+    - include: tasks/oh_my_zsh.yml
+    - include: tasks/user_programs.yml
+    - include: tasks/keepass.yml

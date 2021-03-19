@@ -1,0 +1,18 @@
+- name: Ensure vim is installed
+  become: yes
+  block:
+    - name: Ensure standard vim is not present
+      pacman:
+        name: vim
+        state: absent
+
+    - name: Ensure gvim is not present
+      pacman:
+        name: gvim
+
+    - name: Ensure vundle is installed
+      aur:
+        name: vundle
+
+    - name: Install vundle plugins
+      command: /usr/bin/vim +PluginInstall +qall

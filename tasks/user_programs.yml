@@ -1,0 +1,43 @@
+- name: Install various user programs
+  become: yes
+  tags: gui
+  block:
+    - name: Install media viewer
+      pacman:
+        name:
+          - vlc
+          - feh
+
+    - name: Install thunar
+      pacman:
+        name: thunar
+
+    - name: Install firefox
+      pacman:
+        name: firefox
+
+    - name: Install communication software
+      pacman:
+        name:
+          - discord
+          - thunderbird
+
+    - name: Install 7z
+      pacman:
+        name: p7zip
+
+    - name: Install CLI tools
+      pacman:
+        name:
+          - htop
+          - tree
+
+    - name: Install graphics tools
+      pacman:
+        name:
+          - xorg-xrandr
+          - arandr
+
+- name: Install spotify
+  aur:
+    name: spotify

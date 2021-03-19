@@ -19,7 +19,9 @@ border-left-size = 10
 ;----------;
 
 bottom = false
-monitor = DP-4
+{% if monitor_comand.stdout is defined %}
+monitor = {{ monitor_command.stdout }}
+{% endif %}
 wm-restack = none
 override-redirect = false
 
@@ -131,7 +133,9 @@ ramp-2 = 
 [module/wlan]
 type = internal/network
 
-interface = wlp0s20f3
+{% if wifi_command.stdout is defined %}
+interface = {{ wifi_command.stdout }}
+{% endif %}
 
 interval = 5
 

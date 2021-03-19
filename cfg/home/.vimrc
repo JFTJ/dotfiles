@@ -11,7 +11,8 @@ set colorcolumn=80
 
 " Classin Indentation Style
 set autoindent
-set backspace=indent,eol,start set shiftwidth=4
+set backspace=indent,eol,start
+set shiftwidth=4
 set softtabstop=4
 set expandtab
 

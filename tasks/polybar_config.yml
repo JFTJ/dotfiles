@@ -1,0 +1,25 @@
+- name: Install and configure polybar
+  tags: gui
+  block:
+    - name: Install polybar
+      aur:
+        name: polybar
+    
+    - name: Python dbus
+      become: yes
+      pacman:
+        name: python-dbus
+
+    - name: Get monitor
+      shell: xrandr | grep -Eo "^.* connected" | head -n1 | cut -d " " -f1
+      register: monitor_command
+
+    - name: Get wifi device
+      tags: wifi
+      shell: find /sys/class/net -follow -maxdepth 2 -name wireless | cut -d / -f 5
+      register: wifi_command
+
+    - name: Install i3 config template
+      template:
+        src: templates/i3/config.j2
+        dest: /home/rn/.config/polybar/config

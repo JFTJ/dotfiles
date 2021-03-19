@@ -9,7 +9,7 @@ set $mod Mod4
 font pango:Hack 14
 
 # wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/wallpapersden.com_low-poly-space-planet-minimal_3840x2400.jpg #-----------------------------#
+# exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/wallpapersden.com_low-poly-space-planet-minimal_3840x2400.jpg #-----------------------------#
 # WINDOW / WORKSPACE COMMANDS #
 #-----------------------------#
 
@@ -147,9 +147,6 @@ bindsym $mod+t exec --no-startup-id ~/Scripts/urdraw.sh
 
 # restart i3 in place
 bindsym $mod+Shift+r restart
-
-# print screen
-bindsym Print exec --no-startup-id scrot
 
 # lock i3
 bindsym $mod+u exec --no-startup-id betterlockscreen -l
