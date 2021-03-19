@@ -2,13 +2,14 @@
 - hosts: all
   name: Graphical User Interface
   remote_user: root
+  tags: gui
   roles:
     - kewlfft.aur
 
   tasks:
     - name: Ensure video driver are installed
       pacman:
-        name: "{{video_driver}}"
+        name: "{{ video_driver }}"
 
     - include: tasks/install_i3.yml
     - include: tasks/install_greeter.yml
@@ -28,6 +29,20 @@
     - name: Ensure rofi is installed
       pacman:
         name: rofi
+
+    - name: Install Audio packages
+      tags: audio
+      block:
+        - pacman:
+            name:
+              - pulseaudio
+              - pulseaudio-alsa
+              - pavucontrol
+
+        - name: Install bluetooth audio
+          pacman:
+            name: pulseaudio-bluetooth
+          tags: bluetooth
 
     - name: Install polybar
       become: yes

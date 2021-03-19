@@ -1,0 +1,42 @@
+- name: Make the host reachable via ssh
+  tags: ssh
+  block:
+    - name: Ensure openssh is installed
+      pacman:
+        name: openssh
+
+    - name: Ensure sshd is started and enabled
+      service:
+        name: sshd
+        enabled: yes
+        state: started
+
+    - name: Set authorized key taken from file for rn
+      authorized_key:
+        user: rn
+        state: present
+        key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+    
+    - name: Set authorized key taken from file for root
+      authorized_key:
+        user: root
+        state: present
+        key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+
+    - name: Install ufw
+      pacman:
+        name: ufw
+
+    - name: Allow ssh from local network
+      ufw:
+        rule: allow
+        port: ssh
+        proto: tcp
+        from_ip: 192.168.0.0/16
+
+    - name: Setup sshd config file
+      copy:
+        src: cfg/etc/ssh/sshd_config
+        dest: /etc/ssh/sshd_config
+      notify:
+        - Restart sshd

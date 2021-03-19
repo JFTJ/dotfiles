@@ -1,0 +1,17 @@
+- name: Install Bluetooth
+  tags: bluetooth
+  block:
+    - name: Install Bluetooth with pacman
+      pacman:
+        name:
+          - bluez
+          - bluez-utils
+    - name: Ensure bluetooth kernel module is loaded
+      modprobe:
+        name: btusb
+
+    - name: Enable bluetooth
+      service:
+        name: bluetooth
+        state: started
+        enabled: yes

@@ -1,0 +1,15 @@
+- name: Setup Wifi
+  tags: wifi
+  block:
+    - name: Unblock wifi
+      command: /usr/bin/rfkill unblock wifi
+  
+    - name: Install networkmanager
+      pacman:
+        name: networkmanager
+
+    - name: Enable and start network manager
+      service:
+        name: NetworkManager
+        state: started
+        enabled: yes
