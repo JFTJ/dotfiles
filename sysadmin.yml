@@ -2,8 +2,43 @@
 - hosts: all
   name: System Adminstration
   remote_user: root
+  vars_prompt:
+    - name: root_pwd
+      prompt: Enter root Password
+      private: yes
+      encrypt: sha512_crypt
+      confirm: yes
+      salt_size: 7
+
+    - name: user_pwd
+      prompt: Enter user password
+      private: yes
+      encrypt: sha512_crypt
+      salt_size: 7
 
   tasks:
+    - include: tasks/time.yml
+
+    - name: Ensure locale exists
+      locale_gen:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ locales }}"
+
+    - name: Ensure LANG is set
+      template:
+        src: cfg/etc/locale.conf.j2
+        dest: /etc/locale.conf
+
+    - name: Set hostname
+      hostname:
+        name: "{{ hostname }}"
+
+    - name: Set hosts
+      copy:
+        src: cfg/etc/hosts
+        dest: /etc/hosts
+
     - name: Make sure sudo is installed
       pacman:
         name: sudo
@@ -13,20 +48,29 @@
         name: wheel
         state: present
 
-    - name: Ensure rn is present
+    - name: Ensure {{ user }} is present
       user:
-        name: rn
+        name: '{{ user }}'
         state: present
         groups: wheel
         append: yes
         createhome: yes
+        generate_ssh_key: yes
+        update_password: on_create
+        password: "{{ user_pwd }}"
+
+    - name: Set root pwd
+      user:
+        name: root
+        update_password: always
+        password: "{{ root_pwd }}"
 
     - name: Allow 'wheel' group to have passwordless sudo
       lineinfile:
         dest: /etc/sudoers
         state: present
         regexp: '^%wheel'
-        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+        line: '%wheel ALL=(ALL) {{ sudo_extra_spec }} ALL'
         validate: 'visudo -cf %s'
 
     - include: tasks/bluetooth.yml

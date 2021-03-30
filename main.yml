@@ -1,4 +1,5 @@
 ---
+- import_playbook: install_python.yml
 - import_playbook: sysadmin.yml
 - import_playbook: package_management.yml
 - import_playbook: gui.yml

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  name: Pre install python
+  remote_user: root
+  gather_facts: no
+
+  pre_tasks:
+    - name: Install python
+      raw: "pacman  --noconfirm -S python"

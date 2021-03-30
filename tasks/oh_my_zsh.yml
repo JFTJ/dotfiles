@@ -12,5 +12,5 @@
 
     - name: Change user shell
       user:
-        name: rn
+        name: "{{ user }}"
         shell: /usr/bin/zsh

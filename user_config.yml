@@ -3,21 +3,21 @@
   name: User configuration
   roles:
     - kewlfft.aur
-  remote_user: rn
+  remote_user: "{{ user }}"
 
   tasks:
     - name: Install config files
       copy:
         src: "{{ item }}"
-        dest: /home/rn/
-        owner: rn
+        dest: "/home/{{ user }}/"
+        owner: "{{ user }}"
       with_fileglob:
         - cfg/home/.*
 
     - name: Install .config directory
       copy:
         src: cfg/home/.config/
-        dest: /home/rn/.config
+        dest: "/home/{{ user }}/.config"
 
     - include: tasks/polybar_config.yml
     - include: tasks/install_vim.yml

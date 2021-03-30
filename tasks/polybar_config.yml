@@ -4,7 +4,7 @@
     - name: Install polybar
       aur:
         name: polybar
-    
+
     - name: Python dbus
       become: yes
       pacman:
@@ -22,4 +22,4 @@
     - name: Install i3 config template
       template:
         src: templates/i3/config.j2
-        dest: /home/rn/.config/polybar/config
+        dest: /home/{{ user }}/.config/polybar/config

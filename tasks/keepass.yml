@@ -10,15 +10,15 @@
 
     - name: Start and enable syncthing
       service:
-        name: syncthing@rn
+        name: 'syncthing@{{ user }}'
         enabled: yes
         state: started
 
     - name: Download keepass rpc
       get_url:
-        url: https://github.com/kee-org/keepassrpc/releases/download/v1.14.0/KeePassRPC.plgx 
+        url: https://github.com/kee-org/keepassrpc/releases/download/v1.14.0/KeePassRPC.plgx
         dest: /usr/share/keepass/Plugins/
-    
+
     - name: Download keepass yafd
       get_url:
         url: https://github.com/navossoc/KeePass-Yet-Another-Favicon-Downloader/releases/download/v1.2.4.0/YetAnotherFaviconDownloader.plgx

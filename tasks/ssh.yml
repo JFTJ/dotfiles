@@ -11,12 +11,12 @@
         enabled: yes
         state: started
 
-    - name: Set authorized key taken from file for rn
+    - name: Set authorized key taken from file for {{ user }}
       authorized_key:
-        user: rn
+        user: "{{ user }}"
         state: present
         key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
-    
+
     - name: Set authorized key taken from file for root
       authorized_key:
         user: root

@@ -10,6 +10,7 @@
     - name: Ensure video driver are installed
       pacman:
         name: "{{ video_driver }}"
+      when: video_driver is defined
 
     - include: tasks/install_i3.yml
     - include: tasks/install_greeter.yml

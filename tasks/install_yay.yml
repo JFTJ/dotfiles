@@ -13,13 +13,13 @@
         repo: https://aur.archlinux.org/yay.git
         dest: /tmp/yay
 
-    - name: Ensure yay installation folder is allowed for rn
+    - name: Ensure yay installation folder is allowed for {{ user }}
       file:
         path: /tmp/yay/
-        owner: rn
+        owner: "{{ user }}"
         mode: '700'
 
     - name: Install yay
       become: yes
-      become_user: rn
+      become_user: "{{ user }}"
       shell: (cd /tmp/yay/ && makepkg -si --noconfirm)

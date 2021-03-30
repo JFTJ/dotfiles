@@ -6,13 +6,13 @@
         name: vim
         state: absent
 
-    - name: Ensure gvim is not present
+    - name: Ensure gvim is present
       pacman:
         name: gvim
 
     - name: Ensure vundle is installed
       become: yes
-      become_user: rn
+      become_user: "{{ user }}"
       aur:
         name: vundle
 
