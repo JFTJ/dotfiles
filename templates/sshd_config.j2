@@ -107,7 +107,7 @@ ClientAliveCountMax 2
 # no default banner path
 #Banner none
 
-AllowUsers root@192.168.0.0/16 rn@192.168.0.0/16
+AllowUsers root@192.168.0.0/16 {{ user }}@192.168.0.0/16
 
 # override default of no subsystems
 Subsystem	sftp	/usr/lib/ssh/sftp-server
