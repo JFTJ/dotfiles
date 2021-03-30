@@ -14,7 +14,7 @@ e.g. for graphical vm:
 ansible-playbook -i hosts main.yml --skip-tags bluetooth,audio,wifi
 ```
 
-- `gui`: For workstations, include X, i3, greeters and a bunch of softwares
+- `gui`: For workstations, including X, i3, greeters and a bunch of softwares
 - `ssh`: Make computer accessible via ssh on local network from the current machine
 - `audio`
 - `blueetooth`

@@ -14,3 +14,8 @@
       user:
         name: "{{ user }}"
         shell: /usr/bin/zsh
+
+    - name: Set zsh config file
+      template:
+        src: templates/zshrc.j2
+        dest: "/home/{{ user }}/.zshrc"
