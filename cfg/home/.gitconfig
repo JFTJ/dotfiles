@@ -11,4 +11,6 @@
 	followTags = true
 	default = upstream
 [core]
-	editor = vim
+        editor = vim
+[commit]
+        gpgsign = true
