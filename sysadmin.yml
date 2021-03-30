@@ -27,7 +27,7 @@
 
     - name: Ensure LANG is set
       template:
-        src: cfg/etc/locale.conf.j2
+        src: templates/locale.conf.j2
         dest: /etc/locale.conf
 
     - name: Set hostname
