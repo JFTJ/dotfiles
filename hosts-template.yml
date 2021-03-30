@@ -1,3 +1,11 @@
 all:
   hosts:
   vars:
+    hostname: arch
+    timezone: Europe/Paris
+    locales:                     # list of locales, first will also be the system language
+      - en_US.UTF-8
+      - fr_FR.UTF-8
+    user: rn                     # User that will be in the sudoers file
+    sudo_extra_spec: "NOPASSWD:" # Generally left blank or set to 'NOPASSWD:'
+    video_driver: nvidia         # Remove if unnecessary
