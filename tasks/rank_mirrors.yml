@@ -16,5 +16,5 @@
         regexp: ^#Server
         replace: Server
 
-    - name: Start sorting of mirrors
+    - name: Sorting of mirrors (might take time)
       shell: /usr/bin/rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist

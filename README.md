@@ -1,6 +1,6 @@
 # Arch installation script
 
-Ansible script that installs archlinux.
+My ansible script installing Archlinux.
 
 ### Vars
 

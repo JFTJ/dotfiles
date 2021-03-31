@@ -1,7 +1,7 @@
 - name: Install and configure polybar
   tags: gui
   block:
-    - name: Install polybar
+    - name: Install polybar (might take time)
       aur:
         name: polybar
 

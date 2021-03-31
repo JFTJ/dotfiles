@@ -18,6 +18,8 @@
       copy:
         src: cfg/home/.config/
         dest: "/home/{{ user }}/.config"
+        owner: "{{ user }}"
+        mode: '700'
 
     - include: tasks/polybar_config.yml
     - include: tasks/install_vim.yml
