@@ -1,6 +1,3 @@
-[user]
-	email = raphael.nodenot@epita.fr
-	name = Raphael Nodenot
 [remote "origin"]
 	prune = true
 [pull]
